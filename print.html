@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Raymer — Welcome Guide (Print)</title>
+    <title>The Raymur — Welcome Guide (Print)</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         :root {
             --cream: #FAF9F6;
@@ -24,105 +25,143 @@
             background: var(--cream);
             color: var(--text);
             font-family: 'DM Sans', sans-serif;
-            font-size: 11.5pt;
-            line-height: 1.6;
-            padding: 0.5in;
+            font-size: 10.5pt;
+            line-height: 1.5;
+            padding: 0.4in;
         }
 
         .page {
             max-width: 800px;
             margin: 0 auto;
             background: white;
-            padding: 60px;
+            padding: 40px 50px;
             box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            position: relative;
         }
 
         /* --- Header --- */
         .header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
 
         .property-name {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 48pt;
+            font-size: 42pt;
             color: var(--terracotta);
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             font-weight: 500;
         }
 
         .tagline {
-            font-size: 10pt;
+            font-size: 9pt;
             letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--muted);
             border-top: 1px solid var(--rule);
-            padding-top: 15px;
+            padding-top: 10px;
             display: inline-block;
+        }
+
+        /* --- QR Code --- */
+        #qrcode {
+            position: absolute;
+            top: 40px;
+            right: 50px;
+        }
+
+        .qr-label {
+            font-size: 7pt;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            text-align: center;
+            margin-top: 4px;
+        }
+
+        /* --- Host Photo --- */
+        .host-section {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 30px;
+            background: var(--cream);
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .host-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--terracotta);
         }
 
         /* --- Section Titles --- */
         .section {
-            margin-bottom: 40px;
+            margin-bottom: 24px;
             page-break-inside: avoid;
         }
 
         .section-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 18pt;
+            font-size: 16pt;
             font-weight: 600;
             color: var(--terracotta);
             border-bottom: 1px solid var(--rule);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            padding-bottom: 6px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
-        .icon { font-size: 16pt; }
+        .icon { font-size: 14pt; }
 
         /* --- Quick Reference Box --- */
         .quick-ref {
             background: var(--box-bg);
-            padding: 30px;
+            padding: 20px;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px 40px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px 24px;
+            margin-bottom: 30px;
         }
 
         .qr-item { display: flex; flex-direction: column; }
-        .qr-label { font-size: 9pt; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
-        .qr-value { font-family: 'Cormorant Garamond', serif; font-size: 14pt; font-weight: 600; }
+        .qr-label { font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 2px; }
+        .qr-value { font-family: 'Cormorant Garamond', serif; font-size: 12pt; font-weight: 600; }
 
         /* --- Content Styling --- */
-        p { margin-bottom: 15px; font-weight: 300; }
-        ul { padding-left: 20px; margin-bottom: 15px; }
-        li { margin-bottom: 10px; font-weight: 300; }
+        p { margin-bottom: 10px; font-weight: 300; }
+        ul { padding-left: 18px; margin-bottom: 10px; }
+        li { margin-bottom: 6px; font-weight: 300; }
         strong { font-weight: 500; color: var(--terracotta); }
 
         .note-box {
             background: var(--cream);
-            padding: 20px;
+            padding: 15px;
             border-left: 3px solid var(--terracotta);
-            font-size: 10.5pt;
+            font-size: 9.5pt;
             font-style: italic;
-            margin: 20px 0;
+            margin: 15px 0;
         }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 
         /* --- Checklist --- */
         .checklist { list-style: none; padding-left: 0; }
-        .checklist li { display: flex; align-items: flex-start; gap: 10px; }
-        .checklist li::before { content: "☐"; font-size: 14pt; color: var(--terracotta); line-height: 1; }
+        .checklist li { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 4px; }
+        .checklist li::before { content: "☐"; font-size: 12pt; color: var(--terracotta); line-height: 1.2; }
 
         /* --- Footer --- */
         .footer {
             text-align: center;
-            margin-top: 60px;
-            padding-top: 20px;
+            margin-top: 40px;
+            padding-top: 15px;
             border-top: 1px solid var(--rule);
-            font-size: 10pt;
+            font-size: 9pt;
             color: var(--muted);
             letter-spacing: 0.05em;
         }
@@ -131,128 +170,115 @@
         @media print {
             body { padding: 0; background: white; }
             .page { box-shadow: none; padding: 0; max-width: 100%; }
-            @page { size: Letter; margin: 0.75in; }
+            @page { size: Letter; margin: 0.5in; }
         }
     </style>
 </head>
 <body>
     <div class="page">
+        <!-- QR Code -->
+        <div id="qrcode-container">
+            <div id="qrcode"></div>
+            <div class="qr-label" style="position: absolute; top: 145px; right: 52px; width: 100px;">Scan for Digital Guide</div>
+        </div>
+
         <!-- Header -->
         <header class="header">
-            <div class="property-name">The Raymer</div>
+            <div class="property-name">The Raymur</div>
             <div class="tagline">Strathcona, Vancouver &nbsp;·&nbsp; Your Home Away From Home</div>
         </header>
 
-        <!-- Welcome -->
-        <section class="section">
-            <div class="section-title"><span class="icon">🌿</span> Welcome</div>
-            <p>We're so glad you're here. The Raymer is our own home, and we've done our best to make it feel like yours. Whether you're here to explore the neighbourhood, settle in for a stretch, or simply rest — we hope you feel comfortable and at ease from the moment you arrive.</p>
-            <p>This guide has everything you need. If something comes up that isn't covered here, don't hesitate to reach out.</p>
-        </section>
-
-        <!-- Quick Reference -->
-        <div class="quick-ref">
-            <div class="qr-item">
-                <span class="qr-label">Wi-Fi Network</span>
-                <span class="qr-value">WiFi-EF0C</span>
-            </div>
-            <div class="qr-item">
-                <span class="qr-label">Wi-Fi Password</span>
-                <span class="qr-value">Center7810Apple</span>
-            </div>
-            <div class="qr-item">
-                <span class="qr-label">Check-in</span>
-                <span class="qr-value">3:00 PM</span>
-            </div>
-            <div class="qr-item">
-                <span class="qr-label">Check-out</span>
-                <span class="qr-value">12:00 PM</span>
-            </div>
-            <div class="qr-item">
-                <span class="qr-label">Your Hosts</span>
-                <span class="qr-value">Robert & Veena</span>
-            </div>
-            <div class="qr-item">
-                <span class="qr-label">Building Buzzer</span>
-                <span class="qr-value">2461</span>
+        <div class="host-section">
+            <img src="ROBANDVINA-469.jpg" alt="Robert & Veena" class="host-photo">
+            <div>
+                <p class="lead" style="font-style: italic; margin-bottom: 0;">"This is our home, and we ask that you please treat it as if it is your home. You are welcome to use anything in the house that is not locked, but please treat it respectfully."</p>
             </div>
         </div>
 
-        <!-- Getting In -->
-        <section class="section">
-            <div class="section-title"><span class="icon">🔑</span> Getting In</div>
-            <p>Access to the suite is managed via the smart lock on the front door. Your entry code was sent to you prior to arrival.</p>
-            <p>If you need to buzz into the building from outside, use buzzer code <strong>2461</strong>. One of us will let you in remotely.</p>
-            <p>Please ensure the door is locked when you leave or turn in for the night.</p>
-        </section>
+        <!-- Quick Reference -->
+        <div class="quick-ref">
+            <div class="qr-item"><span class="qr-label">Wi-Fi Network</span><span class="qr-value">WiFi-EF0C</span></div>
+            <div class="qr-item"><span class="qr-label">Wi-Fi Password</span><span class="qr-value">Center7810Apple</span></div>
+            <div class="qr-item"><span class="qr-label">Building Buzzer</span><span class="qr-value">2461</span></div>
+            <div class="qr-item"><span class="qr-label">Check-in</span><span class="qr-value">3:00 PM</span></div>
+            <div class="qr-item"><span class="qr-label">Check-out</span><span class="qr-value">12:00 PM</span></div>
+            <div class="qr-item"><span class="qr-label">Hosts</span><span class="qr-value">Robert & Veena</span></div>
+        </div>
 
-        <!-- Parking -->
-        <section class="section">
-            <div class="section-title"><span class="icon">🚗</span> Parking</div>
-            <p>One secure parking stall is available by request. Street parking is also available directly in front of the building. Please check posted signs for any time restrictions.</p>
-        </section>
+        <div class="grid-2">
+            <div class="col">
+                <section class="section">
+                    <div class="section-title"><span class="icon">🔑</span> Access & Fob</div>
+                    <p>Your blue fob is required for:</p>
+                    <ul>
+                        <li><strong>Level 8:</strong> Gyms & Amenities.</li>
+                        <li><strong>P2:</strong> Garbage & Recycling.</li>
+                        <li><strong>P4:</strong> Parking (Stall assignment in app).</li>
+                    </ul>
+                    <p><strong>Note:</strong> Leave the fob on the kitchen counter upon checkout.</p>
+                </section>
 
-        <!-- House Rules -->
-        <section class="section">
-            <div class="section-title"><span class="icon">🏠</span> House Rules</div>
-            <ul>
-                <li><strong>Quiet Hours:</strong> Please respect our neighbours and observe quiet hours after 10:00 PM.</li>
-                <li><strong>No Parties:</strong> Strictly no parties or large gatherings are permitted.</li>
-                <li><strong>No Smoking:</strong> No smoking or vaping anywhere on the property (indoors or balcony).</li>
-                <li><strong>Respect:</strong> This is our personal home. Please treat our belongings with care.</li>
-            </ul>
-            <div class="note-box">
-                Fridge & pantry: You're welcome to anything in our fridge or cabinets — help yourself. The mini-fridge is set aside for your personal use.
+                <section class="section">
+                    <div class="section-title"><span class="icon">🏠</span> House Rules</div>
+                    <ul>
+                        <li><strong>Shoes:</strong> Please take off shoes inside.</li>
+                        <li><strong>Safety:</strong> No unattended children on balcony.</li>
+                        <li><strong>Climate:</strong> Comfort range is 20-22°C.</li>
+                        <li><strong>Plumbing:</strong> Use bin for all non-TP items.</li>
+                        <li><strong>Water:</strong> Tap is safe; Brita in fridge.</li>
+                    </ul>
+                </section>
             </div>
-        </section>
 
-        <!-- Appliances -->
-        <section class="section">
-            <div class="section-title"><span class="icon">☕</span> Appliances & How-Tos</div>
-            <p><strong>Bosch Espresso Machine:</strong> Makes 30+ drink types. Ensure the water tank (left) is filled and the bean hopper (top) is stocked. Select your drink and press start. Please run the rinse cycle after use.</p>
-            <p><strong>Electric Fireplace:</strong> Use the remote to toggle flames and heat independently. Safe to leave on "flame-only" for ambiance.</p>
-            <p><strong>Patio Fire Table:</strong> Ensure the patio door is closed when lighting. Turn the knob to "on" and press the igniter. Always turn fully off when done.</p>
-        </section>
+            <div class="col">
+                <section class="section">
+                    <div class="section-title"><span class="icon">☕</span> Quick How-Tos</div>
+                    <p><strong>Espresso:</strong> Tank is on the **right**. Beans in cupboard directly above.</p>
+                    <p><strong>Outdoor Fire:</strong> Turn propane cap left, then turn knob left & hold while pressing spark.</p>
+                    <p><strong>Vacuums:</strong> Robot base in living; Samsung Bespoke base in den.</p>
+                </section>
 
-        <!-- Local Recommendations -->
-        <section class="section">
-            <div class="section-title"><span class="icon">🌆</span> Local Recommendations</div>
-            <p>Strathcona has some of Vancouver's best coffee and craft breweries.</p>
-            <ul>
-                <li><strong>Rumor Cafe:</strong> 957 E Hastings (Downstairs).</li>
-                <li><strong>Pho Con Express:</strong> 987 E Hastings (1 min walk).</li>
-                <li><strong>Prototype Coffee:</strong> 883 E Hastings (5 min walk).</li>
-                <li><strong>Strathcona Beer Co:</strong> 895 E Hastings (4 min walk).</li>
-                <li><strong>Container Brewing:</strong> 1216 Franklin St (8 min walk).</li>
-                <li><strong>No Frills:</strong> 1460 E Hastings (5 min walk).</li>
-            </ul>
-        </section>
+                <section class="section" style="background: #fff5f5; padding: 10px; border-radius: 4px;">
+                    <div class="section-title" style="color: #c53030; border-bottom-color: #fecaca;"><span class="icon">⚠️</span> Emergency</div>
+                    <p><strong>Police/Fire/Med:</strong> 911</p>
+                    <p><strong>Hospital:</strong> St. Paul's (Downtown)</p>
+                    <p><strong>Extinguishers:</strong> Under kitchen sink & in hallway to the left of suite exit.</p>
+                    <p><strong>Exit:</strong> Stairs directly to the left in hallway.</p>
+                </section>
+            </div>
+        </div>
 
-        <!-- Emergency -->
         <section class="section">
-            <div class="section-title"><span class="icon">📞</span> Emergency Contacts</div>
-            <p><strong>Robert (Host):</strong> 778-957-2461</p>
-            <p><strong>Veena (Co-host):</strong> 778-956-2461</p>
-            <p><strong>Emergency Services:</strong> 911</p>
-        </section>
-
-        <!-- Checkout Checklist -->
-        <section class="section">
-            <div class="section-title"><span class="icon">✓</span> Before You Go — Checkout</div>
-            <p>Check-out is by <strong>12:00 PM</strong>. We appreciate you taking care of the following:</p>
-            <ul class="checklist">
-                <li>Dishes washed or loaded into the dishwasher.</li>
-                <li>Fridge cleared of any food you brought.</li>
-                <li>Windows and patio door closed and locked.</li>
-                <li>Lights, fans, and TV turned off.</li>
-                <li>Front door locked and key fob left on the kitchen counter.</li>
-            </ul>
+            <div class="section-title"><span class="icon">✓</span> Departure & Checkout</div>
+            <div class="grid-2">
+                <ul class="checklist">
+                    <li>Turn off all lights, appliances, and fireplaces.</li>
+                    <li>Messaging MUST be via Airbnb app only.</li>
+                    <li>Left items will be placed in the building hallway.</li>
+                </ul>
+                <ul class="checklist">
+                    <li>If checking out early, please message us.</li>
+                    <li>Cleaners handle linens; help them by stripping sheets.</li>
+                    <li>Ensure front door is locked and fob is on counter.</li>
+                </ul>
+            </div>
         </section>
 
         <!-- Footer -->
         <div class="footer">
-            The Raymer &nbsp;·&nbsp; Strathcona, Vancouver &nbsp;·&nbsp; Robert & Veena
+            Unit 303, 983 East Hastings St, Vancouver &nbsp;·&nbsp; Robert & Veena
         </div>
     </div>
+
+    <script>
+        new QRCode(document.getElementById("qrcode"), {
+            text: "https://theraymur-guide.netlify.app",
+            width: 100,
+            height: 100,
+            colorDark : "#C05A3E",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+    </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Raymer — Digital Guest Guide</title>
+    <title>The Raymur — Digital Guest Guide</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,341 +19,74 @@
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--cream); color: var(--charcoal); font-family: 'DM Sans', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        .container { max-width: 600px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 60px 0; border-bottom: 1px solid var(--border); }
+        section:last-of-type { border-bottom: none; }
 
-        body {
-            background-color: var(--cream);
-            color: var(--charcoal);
-            font-family: 'DM Sans', sans-serif;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+        nav { position: sticky; top: 0; background: rgba(250, 249, 246, 0.95); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid var(--border); padding: 16px 0; }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--terracotta); text-decoration: none; }
 
-        h1, h2, h3, .serif {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 500;
-        }
+        .hero { padding: 0; position: relative; height: 80vh; display: flex; align-items: flex-end; overflow: hidden; border-bottom: none; }
+        .hero-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.9); }
+        .hero-content { position: relative; z-index: 2; padding: 40px 24px; color: white; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.6)); }
+        .hero h1 { font-size: 48px; margin-bottom: 8px; line-height: 1.1; }
+        .hero p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 20px; opacity: 0.9; }
 
-        /* --- Layout --- */
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        .gallery-scroll { display: flex; overflow-x: auto; gap: 16px; padding: 24px 0; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; }
+        .gallery-scroll::-webkit-scrollbar { display: none; }
+        .gallery-item { flex: 0 0 85%; aspect-ratio: 4/5; scroll-snap-align: center; border-radius: 4px; overflow: hidden; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        section {
-            padding: 60px 0;
-            border-bottom: 1px solid var(--border);
-        }
+        .gallery-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; padding: 0 10px; pointer-events: none; z-index: 10; }
+        .gallery-btn { width: 44px; height: 44px; border-radius: 50%; background: rgba(255, 255, 255, 0.9); border: none; box-shadow: 0 2px 10px rgba(0,0,0,0.1); cursor: pointer; pointer-events: auto; display: flex; align-items: center; justify-content: center; color: var(--terracotta); font-size: 24px; transition: var(--transition); }
+        .gallery-btn:hover { background: white; transform: scale(1.1); }
 
-        section:last-of-type {
-            border-bottom: none;
-        }
+        .section-tag { display: block; text-transform: uppercase; font-size: 11px; letter-spacing: 0.2em; color: var(--terracotta); margin-bottom: 16px; font-weight: 700; }
+        h2 { font-size: 32px; margin-bottom: 24px; color: var(--charcoal); }
+        p { margin-bottom: 20px; font-weight: 300; color: #4A4A4A; }
+        .lead { font-size: 18px; font-family: 'Cormorant Garamond', serif; font-style: italic; line-height: 1.5; }
 
-        /* --- Navigation --- */
-        nav {
-            position: sticky;
-            top: 0;
-            background: rgba(250, 249, 246, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            border-bottom: 1px solid var(--border);
-            padding: 16px 0;
-        }
+        .feature-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 40px; }
+        .feature-card { background: white; padding: 32px; border-radius: 2px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid var(--border); }
+        .feature-card h3 { font-size: 24px; margin-bottom: 12px; color: var(--terracotta); }
 
-        .nav-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .map-link { display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: var(--charcoal); padding: 12px 0; border-bottom: 1px solid var(--border); }
+        .map-info h4 { font-size: 18px; margin-bottom: 2px; font-weight: 500; }
+        .map-info p { font-size: 14px; margin-bottom: 0; color: var(--terracotta); }
+        .map-icon { width: 32px; height: 32px; background: var(--terracotta); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: var(--transition); font-size: 12px; }
 
-        .logo {
-            font-size: 24px;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--terracotta);
-            text-decoration: none;
-        }
+        .essentials { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+        .essential-box { background: #F2EBE6; padding: 16px; text-align: center; }
+        .essential-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px; color: var(--terracotta); }
+        .essential-value { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 16px; }
 
-        /* --- Hero --- */
-        .hero {
-            padding: 0;
-            position: relative;
-            height: 80vh;
-            display: flex;
-            align-items: flex-end;
-            overflow: hidden;
-            border-bottom: none;
-        }
+        .host-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 24px; border: 2px solid var(--terracotta); }
 
-        .hero-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.9);
-        }
+        footer { background: var(--charcoal); color: var(--cream); padding: 80px 0 40px; text-align: center; }
+        .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 32px; margin-bottom: 16px; display: block; }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 40px 24px;
-            color: white;
-            width: 100%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.6));
-        }
+        .print-btn { display: inline-block; margin-top: 20px; padding: 12px 24px; background: var(--terracotta); color: white; text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; font-weight: 700; border-radius: 2px; transition: var(--transition); }
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 8px;
-            line-height: 1.1;
-        }
+        .rule-list { padding-left: 20px; font-weight: 300; }
+        .rule-list li { margin-bottom: 12px; }
 
-        .hero p {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: 20px;
-            opacity: 0.9;
-        }
+        .alert-box { background: #fff5f5; border-left: 4px solid #f87171; padding: 20px; margin: 24px 0; }
+        .alert-box h4 { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #991b1b; margin-bottom: 8px; }
 
-        /* --- Gallery --- */
-        .gallery-scroll {
-            display: flex;
-            overflow-x: auto;
-            gap: 16px;
-            padding: 24px 0;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-        }
-
-        .gallery-scroll::-webkit-scrollbar {
-            display: none;
-        }
-
-        .gallery-item {
-            flex: 0 0 85%;
-            aspect-ratio: 4/5;
-            scroll-snap-align: center;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* --- Typography & Elements --- */
-        .section-tag {
-            display: block;
-            text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 0.2em;
-            color: var(--terracotta);
-            margin-bottom: 16px;
-            font-weight: 700;
-        }
-
-        h2 {
-            font-size: 32px;
-            margin-bottom: 24px;
-            color: var(--charcoal);
-        }
-
-        p {
-            margin-bottom: 20px;
-            font-weight: 300;
-            color: #4A4A4A;
-        }
-
-        .lead {
-            font-size: 18px;
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            line-height: 1.5;
-        }
-
-        /* --- Grid Features --- */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
-            margin-top: 40px;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 32px;
-            border-radius: 2px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            border: 1px solid var(--border);
-        }
-
-        .feature-card h3 {
-            font-size: 24px;
-            margin-bottom: 12px;
-            color: var(--terracotta);
-        }
-
-        /* --- Map Links --- */
-        .map-list {
-            list-style: none;
-        }
-
-        .map-item {
-            margin-bottom: 12px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .map-item:last-child {
-            border-bottom: none;
-        }
-
-        .map-link {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-decoration: none;
-            color: var(--charcoal);
-            padding: 12px 0;
-        }
-
-        .map-info h4 {
-            font-size: 18px;
-            margin-bottom: 2px;
-            font-weight: 500;
-        }
-
-        .map-info p {
-            font-size: 14px;
-            margin-bottom: 0;
-            color: var(--terracotta);
-        }
-
-        .map-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--terracotta);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            transition: var(--transition);
-            font-size: 12px;
-        }
-
-        .map-link:hover .map-icon {
-            background: var(--terracotta-dark);
-            transform: scale(1.1);
-        }
-
-        /* --- Essentials Bar --- */
-        .essentials {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-top: 24px;
-        }
-
-        .essential-box {
-            background: #F2EBE6;
-            padding: 16px;
-            text-align: center;
-        }
-
-        .essential-label {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            display: block;
-            margin-bottom: 4px;
-            color: var(--terracotta);
-        }
-
-        .essential-value {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            font-size: 16px;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background: var(--charcoal);
-            color: var(--cream);
-            padding: 80px 0 40px;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        .footer-tag {
-            font-size: 12px;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            opacity: 0.6;
-        }
-
-        .print-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
-            background: var(--terracotta);
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 0.1em;
-            font-weight: 700;
-            border-radius: 2px;
-            transition: var(--transition);
-        }
-
-        .print-btn:hover {
-            background: var(--terracotta-dark);
-        }
-
-        /* --- Print Optimizations --- */
-        @media print {
-            nav, .hero, .map-icon, .print-btn, footer { display: none !important; }
-            body { background: white; color: black; }
-            .container { max-width: 100%; padding: 0; }
-            section { page-break-inside: avoid; border-bottom: 1px solid #eee; padding: 40px 0; }
-            .feature-card { border: 1px solid #eee; box-shadow: none; }
-            .gallery-scroll { display: block; }
-            .gallery-item { margin-bottom: 20px; width: 100%; aspect-ratio: 16/9; }
-        }
-
-        /* Desktop Adjustments */
-        @media (min-width: 768px) {
-            .hero { height: 60vh; }
-            .gallery-item { flex: 0 0 45%; }
-            .feature-grid { grid-template-columns: 1fr 1fr; }
-        }
+        @media (min-width: 768px) { .hero { height: 60vh; } .gallery-item { flex: 0 0 45%; } .feature-grid { grid-template-columns: 1fr 1fr; } }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="container nav-inner">
-            <a href="#" class="logo serif">The Raymer</a>
+            <a href="#" class="logo serif">The Raymur</a>
             <div style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;">Strathcona, BC</div>
         </div>
     </nav>
@@ -362,16 +95,17 @@
         <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1572189268272476027/original/9d16a30c-ba3b-4313-b612-6cc45c26fd54.jpeg?im_w=1440" alt="Living Room" class="hero-img">
         <div class="hero-content container">
             <span class="section-tag" style="color: white; opacity: 0.8;">Welcome Home</span>
-            <h1 class="serif">The Raymer</h1>
+            <h1 class="serif">The Raymur</h1>
             <p>A curated escape in the heart of Strathcona Village.</p>
         </div>
     </div>
 
     <section id="welcome">
-        <div class="container">
-            <span class="section-tag">Arrival</span>
+        <div class="container" style="text-align: center;">
+            <img src="ROBANDVINA-469.jpg" alt="Robert & Veena" class="host-photo">
+            <span class="section-tag">A Note from Your Hosts</span>
             <h2 class="serif">Welcome to our Home</h2>
-            <p class="lead">We're so glad you're here. The Raymer is our personal residence, thoughtfully designed to be a sanctuary amidst the vibrant energy of East Vancouver.</p>
+            <p class="lead" style="text-align: left;">This is our home, and we ask that you please treat it as if it is your home. You are welcome to use anything in the house that is not locked, but please treat it respectfully.</p>
             
             <div class="essentials">
                 <div class="essential-box">
@@ -383,17 +117,36 @@
                     <span class="essential-value">Center7810Apple</span>
                 </div>
                 <div class="essential-box">
-                    <span class="essential-label">Building Buzzer</span>
-                    <span class="essential-value">2461</span>
+                    <span class="essential-label">Check-in</span>
+                    <span class="essential-value">3:00 PM</span>
                 </div>
                 <div class="essential-box">
                     <span class="essential-label">Check-out</span>
                     <span class="essential-value">12:00 PM</span>
                 </div>
+                <div class="essential-box" style="grid-column: span 2;">
+                    <span class="essential-label">Building Buzzer</span>
+                    <span class="essential-value">2461</span>
+                </div>
             </div>
             
-            <div style="text-align: center;">
-                <a href="print.html" class="print-btn">View Printable Guide</a>
+            <a href="print.html" class="print-btn">View Printable Guide</a>
+        </div>
+    </section>
+
+    <section id="access">
+        <div class="container">
+            <span class="section-tag">Building Access</span>
+            <h2 class="serif">Fob & Key Entry</h2>
+            <p>Your blue key fob is required to access building amenities and specific floors:</p>
+            <ul class="rule-list">
+                <li><strong>Level 8:</strong> Building Gyms & Amenities.</li>
+                <li><strong>P2:</strong> Garbage & Recycling disposal.</li>
+                <li><strong>P4:</strong> Secure Parking (Stall assignment will be provided in Airbnb app).</li>
+            </ul>
+            <div class="alert-box">
+                <h4>Fob Return</h4>
+                <p style="margin-bottom: 0;">The key fob <strong>must be left inside the suite</strong> on the kitchen counter upon your final checkout. If you check out early, please message us via Airbnb so we can inform our cleaners.</p>
             </div>
         </div>
     </section>
@@ -403,158 +156,40 @@
             <span class="section-tag">The Space</span>
             <h2 class="serif">Modern Editorial Living</h2>
         </div>
-        <div class="gallery-scroll">
-            <div class="gallery-item">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1572189268272476027/original/d985e02a-4d7c-4f90-b2f6-bf3f7a57c8e1.jpeg?im_w=1440" alt="Bedroom">
+        <div style="position: relative;">
+            <div class="gallery-nav">
+                <button class="gallery-btn" onclick="document.querySelector('.gallery-scroll').scrollBy({left: -300, behavior: 'smooth'})">‹</button>
+                <button class="gallery-btn" onclick="document.querySelector('.gallery-scroll').scrollBy({left: 300, behavior: 'smooth'})">›</button>
             </div>
-            <div class="gallery-item">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1572189268272476027/original/2ee35233-2302-44fa-97ba-3bcba69df8a9.jpeg?im_w=1440" alt="Flex Room">
-            </div>
-            <div class="gallery-item">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1572189268272476027/original/f357c5f9-0b93-470d-8c08-ae52b4620109.jpeg?im_w=1440" alt="Balcony View">
-            </div>
-            <div class="gallery-item">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1572189268272476027/original/aa3e0440-c0e9-4624-9409-01ff93a2dc33.jpeg?im_w=1440" alt="City View">
+            <div class="gallery-scroll">
+                <div class="gallery-item"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1572189268272476027/original/d985e02a-4d7c-4f90-b2f6-bf3f7a57c8e1.jpeg?im_w=1440" alt="Bedroom"></div>
+                <div class="gallery-item"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1572189268272476027/original/2ee35233-2302-44fa-97ba-3bcba69df8a9.jpeg?im_w=1440" alt="Flex Room"></div>
+                <div class="gallery-item"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1572189268272476027/original/f357c5f9-0b93-470d-8c08-ae52b4620109.jpeg?im_w=1440" alt="Balcony View"></div>
+                <div class="gallery-item"><img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1572189268272476027/original/aa3e0440-c0e9-4624-9409-01ff93a2dc33.jpeg?im_w=1440" alt="City View"></div>
             </div>
         </div>
     </section>
 
-    <section id="features">
+    <section id="how-to">
         <div class="container">
-            <span class="section-tag">Details</span>
-            <h2 class="serif">Thoughtful Amenities</h2>
-            
+            <span class="section-tag">Appliances</span>
+            <h2 class="serif">How-To Guide</h2>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <h3 class="serif">Morning Ritual</h3>
-                    <p>The Bosch 800 Series Espresso machine makes over 30 varieties of coffee. Please check the water tank on the left and ensure the bean hopper is full.</p>
+                    <h3 class="serif">Espresso Machine</h3>
+                    <p>Bosch 800 Series: Water tank is on the **right side**. Fresh beans are in the cupboard directly above the machine. Run rinse cycle after use.</p>
                 </div>
                 <div class="feature-card">
-                    <h3 class="serif">Rest & Recharge</h3>
-                    <p>The bedroom features a King-size bed with hotel-standard linens. The Flex room offers a Murphy bed or a dedicated workspace with a mountain view.</p>
+                    <h3 class="serif">Outdoor Fire Table</h3>
+                    <p>1. Open door, turn propane cap left. 2. Turn knob left, press spark button. 3. Hold knob in for a few seconds to ignite.</p>
                 </div>
                 <div class="feature-card">
-                    <h3 class="serif">Ambiance</h3>
-                    <p>Use the remote for the living room's electric fireplace. On the patio, the gas fire table provides warmth for evening city-watching.</p>
+                    <h3 class="serif">Robot Vacuum</h3>
+                    <p>Press Power to start whole-home clean. Press Home to return to base. If stuck, clear debris from underneath and press Power to resume.</p>
                 </div>
                 <div class="feature-card">
-                    <h3 class="serif">The View</h3>
-                    <p>North-facing views capture the North Shore mountains and the working port. Note: Earplugs are provided in the nightstand for the freight train line below.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="guidebook">
-        <div class="container">
-            <span class="section-tag">Explore</span>
-            <h2 class="serif">Local Recommendations</h2>
-            <p>Our favorite spots within walking distance in Strathcona and beyond.</p>
-
-            <div class="map-list">
-                <!-- Coffee -->
-                <div class="map-item">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Rumor+Cafe+957+East+Hastings+Vancouver" target="_blank" class="map-link">
-                        <div class="map-info">
-                            <h4>Rumor Cafe</h4>
-                            <p>Coffee & Light Bites — 957 E Hastings (Downstairs)</p>
-                        </div>
-                        <div class="map-icon">→</div>
-                    </a>
-                </div>
-                <div class="map-item">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Prototype+Coffee+883+East+Hastings+Vancouver" target="_blank" class="map-link">
-                        <div class="map-info">
-                            <h4>Prototype Coffee</h4>
-                            <p>Artisanal Roast — 883 E Hastings (5 min walk)</p>
-                        </div>
-                        <div class="map-icon">→</div>
-                    </a>
-                </div>
-                <!-- Food -->
-                <div class="map-item">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Pho+Con+Express+987+East+Hastings+Vancouver" target="_blank" class="map-link">
-                        <div class="map-info">
-                            <h4>Pho Con Express</h4>
-                            <p>Vietnamese Kitchen — 987 E Hastings (1 min walk)</p>
-                        </div>
-                        <div class="map-icon">→</div>
-                    </a>
-                </div>
-                <!-- Drinks -->
-                <div class="map-item">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Strathcona+Beer+Company+895+East+Hastings+Vancouver" target="_blank" class="map-link">
-                        <div class="map-info">
-                            <h4>Strathcona Beer Co.</h4>
-                            <p>Pizza & Craft Beer — 895 E Hastings (4 min walk)</p>
-                        </div>
-                        <div class="map-icon">→</div>
-                    </a>
-                </div>
-                <div class="map-item">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Container+Brewing+1216+Franklin+Street+Vancouver" target="_blank" class="map-link">
-                        <div class="map-info">
-                            <h4>Container Brewing</h4>
-                            <p>Craft Beer & Patio — 1216 Franklin St (8 min walk)</p>
-                        </div>
-                        <div class="map-icon">→</div>
-                    </a>
-                </div>
-                <!-- Essentials -->
-                <div class="map-item">
-                    <a href="https://www.google.com/maps/search/?api=1&query=No+Frills+1460+East+Hastings+Street+Vancouver" target="_blank" class="map-link">
-                        <div class="map-info">
-                            <h4>No Frills</h4>
-                            <p>Grocery Essentials — 1460 E Hastings (5 min walk)</p>
-                        </div>
-                        <div class="map-icon">→</div>
-                    </a>
-                </div>
-                <!-- City -->
-                <div class="map-item">
-                    <a href="https://www.google.com/maps/search/?api=1&query=BC+Place+Vancouver" target="_blank" class="map-link">
-                        <div class="map-info">
-                            <h4>BC Place & Rogers Arena</h4>
-                            <p>Stadium District — 10 min transit</p>
-                        </div>
-                        <div class="map-icon">→</div>
-                    </a>
-                </div>
-                <div class="map-item">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Gastown+Vancouver" target="_blank" class="map-link">
-                        <div class="map-info">
-                            <h4>Gastown & Chinatown</h4>
-                            <p>Historic District — 12 min walk</p>
-                        </div>
-                        <div class="map-icon">→</div>
-                    </a>
-                </div>
-                <div class="map-item">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Commercial+Drive+Vancouver" target="_blank" class="map-link">
-                        <div class="map-info">
-                            <h4>Commercial Drive</h4>
-                            <p>Eclectic Dining & Shops — 15 min walk</p>
-                        </div>
-                        <div class="map-icon">→</div>
-                    </a>
-                </div>
-                <div class="map-item">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Olympic+Village+Vancouver" target="_blank" class="map-link">
-                        <div class="map-info">
-                            <h4>Olympic Village</h4>
-                            <p>Seawall & Brewing — 20 min walk</p>
-                        </div>
-                        <div class="map-icon">→</div>
-                    </a>
-                </div>
-                <div class="map-item">
-                    <a href="https://www.google.com/maps/search/?api=1&query=PNE+Vancouver" target="_blank" class="map-link">
-                        <div class="map-info">
-                            <h4>PNE Grounds</h4>
-                            <p>Exhibition & Events — 8 min transit</p>
-                        </div>
-                        <div class="map-icon">→</div>
-                    </a>
+                    <h3 class="serif">Samsung Bespoke Vacuum</h3>
+                    <p>Located in the den. Lift off base, use touch controls. Return to base after use; it will automatically empty the dirt.</p>
                 </div>
             </div>
         </div>
@@ -563,27 +198,50 @@
     <section id="rules">
         <div class="container">
             <span class="section-tag">House Rules</span>
-            <h2 class="serif">Respecting the Space</h2>
-            <p>As this is our personal home, we ask that you treat it with the same care we do.</p>
-            <ul style="padding-left: 20px; font-weight: 300;">
-                <li style="margin-bottom: 12px;">Quiet hours are strictly 10:00 PM – 8:00 AM.</li>
-                <li style="margin-bottom: 12px;">No parties, events, or commercial filming.</li>
-                <li style="margin-bottom: 12px;">No smoking or vaping on the balcony or inside.</li>
-                <li style="margin-bottom: 12px;">The mini-fridge is yours; feel free to use anything in the main pantry.</li>
+            <h2 class="serif">Comfort & Care</h2>
+            <ul class="rule-list">
+                <li><strong>Shoes Off:</strong> Please remove your shoes when entering the home.</li>
+                <li><strong>Balcony Safety:</strong> Do not leave children unattended on the balcony at any time.</li>
+                <li><strong>Climate:</strong> Each room has a thermostat. Comfortable range is 20-22°C. On hot days, ensure AC tubes are properly inserted in the window.</li>
+                <li><strong>Kitchen:</strong> Tap water is safe to drink. A Brita filter is in the fridge, and ice trays are in the mini-fridge freezer.</li>
+                <li><strong>Supplies:</strong> Feel free to use laundry detergent and cleaning products. Please use only toilet paper in the toilet; other items go in the bin.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="emergency" style="background: #fffafa;">
+        <div class="container">
+            <span class="section-tag" style="color: #c53030;">Safety First</span>
+            <h2 class="serif">In Case of Emergency</h2>
+            <p><strong>Emergency Services:</strong> Dial 911 (Police, Fire, Ambulance).</p>
+            <p><strong>Nearest Hospital:</strong> St. Paul's Hospital (Downtown).</p>
+            <div style="margin-top: 24px;">
+                <p><strong>Fire Extinguishers:</strong> Under the kitchen sink, and a larger one in the building hallway to the left of our suite exit.</p>
+                <p><strong>Building Safety:</strong> Emergency stairs are located directly to the left in the hallway. Use fire doors as marked.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="checkout">
+        <div class="container">
+            <span class="section-tag">Departure</span>
+            <h2 class="serif">Checkout Checklist</h2>
+            <ul class="rule-list">
+                <li>Check-out is at <strong>12:00 PM</strong>.</li>
+                <li>Turn off all lights, appliances, and fireplaces.</li>
+                <li><strong>Linens & Dishes:</strong> Our cleaners will handle these. However, if you'd like to help, feel free to run a load of dishes and strip the sheets.</li>
+                <li><strong>Left Items:</strong> Any items left behind will be placed in the hallway. We will notify you of lost items; pick-up or shipping (at guest's expense) can be arranged based on availability.</li>
+                <li><strong>Contact:</strong> All messaging must be through the Airbnb app. We reply promptly.</li>
             </ul>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <span class="footer-logo">The Raymer</span>
-            <p class="footer-tag">Strathcona, Vancouver, BC</p>
+            <span class="footer-logo">The Raymur</span>
+            <p class="footer-tag">Unit 303, 983 East Hastings St, Vancouver</p>
             <p style="margin-top: 40px; opacity: 0.5; font-size: 11px;">&copy; 2026 Robert & Veena</p>
         </div>
     </footer>
-
-    <script>
-        // Interaction scripts
-    </script>
 </body>
 </html>
