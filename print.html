@@ -40,12 +40,18 @@
         }
 
         /* --- Header --- */
-        .header { text-align: center; margin-bottom: 10px; }
+        .header { text-align: center; margin-bottom: 10px; padding-right: 100px; } /* Space for QR */
         .property-name { font-family: 'Cormorant Garamond', serif; font-size: 28pt; color: var(--terracotta); margin-bottom: 0; font-weight: 500; }
         .tagline { font-size: 7pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 4px; display: inline-block; }
 
-        #qrcode { position: absolute; top: 20px; right: 30px; }
-        .qr-label { font-size: 5.5pt; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-align: center; margin-top: 2px; }
+        #qrcode-container {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            text-align: center;
+        }
+        #qrcode { margin-bottom: 4px; }
+        .qr-label { font-size: 5.5pt; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); width: 80px; margin: 0 auto; }
 
         /* --- Host Photo --- */
         .host-section { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; background: var(--cream); padding: 10px; border-radius: 4px; }
@@ -56,8 +62,8 @@
         .icon { font-size: 10pt; }
 
         .quick-ref { background: var(--box-bg); padding: 10px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px 12px; margin-bottom: 12px; }
-        .qr-item { display: flex; flex-direction: column; }
-        .qr-label { font-size: 6pt; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0; }
+        .qr-item { display: flex; flex-direction: column; text-align: center; }
+        .qr-label-box { font-size: 6pt; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0; }
         .qr-value { font-family: 'Cormorant Garamond', serif; font-size: 9.5pt; font-weight: 600; }
 
         p { margin-bottom: 4px; font-weight: 300; }
@@ -85,7 +91,7 @@
     <div class="page">
         <div id="qrcode-container">
             <div id="qrcode"></div>
-            <div class="qr-label" style="position: absolute; top: 115px; right: 32px; width: 100px;">Scan for Mobile Guide</div>
+            <div class="qr-label">Scan for Mobile Guide</div>
         </div>
 
         <header class="header">
@@ -105,12 +111,12 @@
         </div>
 
         <div class="quick-ref">
-            <div class="qr-item"><span class="qr-label">Wi-Fi Network</span><span class="qr-value">WiFi-EF0C</span></div>
-            <div class="qr-item"><span class="qr-label">Wi-Fi Password</span><span class="qr-value">Center7810Apple</span></div>
-            <div class="qr-item"><span class="qr-label">Building Buzzer</span><span class="qr-value">2461</span></div>
-            <div class="qr-item"><span class="qr-label">Check-in</span><span class="qr-value">3:00 PM</span></div>
-            <div class="qr-item"><span class="qr-label">Check-out</span><span class="qr-value">12:00 PM</span></div>
-            <div class="qr-item"><span class="qr-label">Hosts</span><span class="qr-value">Robert & Vina</span></div>
+            <div class="qr-item"><span class="qr-label-box">Wi-Fi Network</span><span class="qr-value">WiFi-EF0C</span></div>
+            <div class="qr-item"><span class="qr-label-box">Wi-Fi Password</span><span class="qr-value">Center7810Apple</span></div>
+            <div class="qr-item"><span class="qr-label-box">Building Buzzer</span><span class="qr-value">2461</span></div>
+            <div class="qr-item"><span class="qr-label-box">Check-in</span><span class="qr-value">3:00 PM</span></div>
+            <div class="qr-item"><span class="qr-label-box">Check-out</span><span class="qr-value">12:00 PM</span></div>
+            <div class="qr-item"><span class="qr-label-box">Hosts</span><span class="qr-value">Robert & Vina</span></div>
         </div>
 
         <div class="grid-2">
@@ -118,9 +124,8 @@
                 <section class="section">
                     <div class="section-title"><span class="icon">🔑</span> Access & Logistics</div>
                     <p><strong>Buzzer:</strong> First entry only. Use blue fob thereafter.</p>
-                    <p><strong>Suite Door:</strong> 4-digit code provided in Airbnb app.</p>
-                    <p><strong>Fob Floors:</strong> 3 (Suite), 8 (Gyms), 4 (Parking), P2 (Garbage).</p>
-                    <p><strong>Requests:</strong> Message via Airbnb for early/late entry.</p>
+                    <p><strong>Fob Access:</strong> Floors 3 (Suite), 8 (Gyms), 4 (Parking), P2 (Garbage).</p>
+                    <p style="font-size: 8.5pt; color: #c53030;"><strong>LOST FOB:</strong> If the key fob is lost, there will be a charge of <strong>$50 for a small fob</strong> or <strong>$100 for a garage key fob</strong>.</p>
                 </section>
 
                 <section class="section">
@@ -132,12 +137,6 @@
                         <li>Tap water is safe; Brita in fridge; Ice in mini-freezer.</li>
                         <li>Feel free to use any laundry/cleaning supplies.</li>
                     </ul>
-                </section>
-
-                <section class="section">
-                    <div class="section-title"><span class="icon">⚠️</span> Emergency</div>
-                    <p><strong>911:</strong> Police/Fire/Med. <strong>Hospital:</strong> St. Paul's.</p>
-                    <p><strong>Extinguishers:</strong> Under kitchen sink & in hallway left of exit.</p>
                 </section>
             </div>
 
@@ -167,17 +166,6 @@
                     </ul>
                 </section>
             </div>
-        </div>
-
-        <div class="grid-2">
-            <section class="section">
-                <div class="section-title"><span class="icon">📍</span> City Attractions</div>
-                <p style="font-size: 8.5pt;">Stanley Park Seawall · Granville Island Market · English Bay Sunset · Capilano Suspension Bridge</p>
-            </section>
-            <section class="section">
-                <div class="section-title"><span class="icon">🚗</span> Road Trip Ideas</div>
-                <p style="font-size: 8.5pt;"><strong>Whistler:</strong> 2hr North. <strong>Squamish:</strong> 1hr North. <strong>Hope:</strong> 2hr East.</p>
-            </section>
         </div>
 
         <section class="section" style="margin-bottom: 0;">
