@@ -45,7 +45,6 @@
 
         .gallery-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; padding: 0 10px; pointer-events: none; z-index: 10; }
         .gallery-btn { width: 44px; height: 44px; border-radius: 50%; background: rgba(255, 255, 255, 0.9); border: none; box-shadow: 0 2px 10px rgba(0,0,0,0.1); cursor: pointer; pointer-events: auto; display: flex; align-items: center; justify-content: center; color: var(--terracotta); font-size: 24px; transition: var(--transition); }
-        .gallery-btn:hover { background: white; transform: scale(1.1); }
 
         .section-tag { display: block; text-transform: uppercase; font-size: 11px; letter-spacing: 0.2em; color: var(--terracotta); margin-bottom: 16px; font-weight: 700; }
         h2 { font-size: 32px; margin-bottom: 24px; color: var(--charcoal); }
@@ -54,7 +53,7 @@
 
         .feature-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 40px; }
         .feature-card { background: white; padding: 32px; border-radius: 2px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid var(--border); }
-        .feature-card h3 { font-size: 24px; margin-bottom: 12px; color: var(--terracotta); }
+        .feature-card h3 { font-size: 24px; margin-bottom: 12px; color: var(--terracotta); display: flex; align-items: center; gap: 12px; }
 
         .map-link { display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: var(--charcoal); padding: 12px 0; border-bottom: 1px solid var(--border); }
         .map-info h4 { font-size: 18px; margin-bottom: 2px; font-weight: 500; }
@@ -66,12 +65,10 @@
         .essential-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 4px; color: var(--terracotta); }
         .essential-value { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 16px; }
 
-        .host-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 24px; border: 2px solid var(--terracotta); }
+        .host-photo { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; margin-bottom: 24px; border: 2px solid var(--terracotta); }
 
         footer { background: var(--charcoal); color: var(--cream); padding: 80px 0 40px; text-align: center; }
         .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 32px; margin-bottom: 16px; display: block; }
-
-        .print-btn { display: inline-block; margin-top: 20px; padding: 12px 24px; background: var(--terracotta); color: white; text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; font-weight: 700; border-radius: 2px; transition: var(--transition); }
 
         .rule-list { padding-left: 20px; font-weight: 300; }
         .rule-list li { margin-bottom: 12px; }
@@ -79,7 +76,10 @@
         .alert-box { background: #fff5f5; border-left: 4px solid #f87171; padding: 20px; margin: 24px 0; }
         .alert-box h4 { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #991b1b; margin-bottom: 8px; }
 
-        @media (min-width: 768px) { .hero { height: 60vh; } .gallery-item { flex: 0 0 45%; } .feature-grid { grid-template-columns: 1fr 1fr; } }
+        .appliance-icon { font-size: 28px; }
+
+        .road-trip-card { background: #F2EBE6; padding: 20px; border-radius: 4px; margin-bottom: 16px; }
+        .road-trip-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--terracotta); margin-bottom: 4px; }
     </style>
 </head>
 <body>
@@ -102,52 +102,41 @@
 
     <section id="welcome">
         <div class="container" style="text-align: center;">
-            <img src="ROBANDVINA-469.jpg" alt="Robert & Veena" class="host-photo">
+            <img src="ROBANDVINA-469.jpg" alt="Robert & Vina" class="host-photo">
             <span class="section-tag">A Note from Your Hosts</span>
             <h2 class="serif">Welcome to our Home</h2>
             <p class="lead" style="text-align: left;">This is our home, and we ask that you please treat it as if it is your home. You are welcome to use anything in the house that is not locked, but please treat it respectfully.</p>
             
             <div class="essentials">
-                <div class="essential-box">
-                    <span class="essential-label">Wi-Fi Network</span>
-                    <span class="essential-value">WiFi-EF0C</span>
-                </div>
-                <div class="essential-box">
-                    <span class="essential-label">Wi-Fi Password</span>
-                    <span class="essential-value">Center7810Apple</span>
-                </div>
-                <div class="essential-box">
-                    <span class="essential-label">Check-in</span>
-                    <span class="essential-value">3:00 PM</span>
-                </div>
-                <div class="essential-box">
-                    <span class="essential-label">Check-out</span>
-                    <span class="essential-value">12:00 PM</span>
-                </div>
+                <div class="essential-box"><span class="essential-label">Wi-Fi Network</span><span class="essential-value">WiFi-EF0C</span></div>
+                <div class="essential-box"><span class="essential-label">Wi-Fi Password</span><span class="essential-value">Center7810Apple</span></div>
+                <div class="essential-box"><span class="essential-label">Check-in</span><span class="essential-value">3:00 PM</span></div>
+                <div class="essential-box"><span class="essential-label">Check-out</span><span class="essential-value">12:00 PM</span></div>
                 <div class="essential-box" style="grid-column: span 2;">
                     <span class="essential-label">Building Buzzer</span>
                     <span class="essential-value">2461</span>
+                    <small style="display: block; font-size: 10px; margin-top: 4px; opacity: 0.7;">First entry only. Use fob thereafter.</small>
                 </div>
             </div>
             
-            <a href="print.html" class="print-btn">View Printable Guide</a>
+            <div class="alert-box" style="text-align: left;">
+                <h4 style="color: var(--charcoal);">Suite Entry</h4>
+                <p style="margin-bottom: 0;">The front door to our home is a keyless entry. You will be provided a unique 4-digit code via the Airbnb app prior to your arrival.</p>
+            </div>
         </div>
     </section>
 
     <section id="access">
         <div class="container">
             <span class="section-tag">Building Access</span>
-            <h2 class="serif">Fob & Key Entry</h2>
-            <p>Your blue key fob is required to access building amenities and specific floors:</p>
+            <h2 class="serif">Fob Access Limits</h2>
+            <p>Once you have retrieved your blue key fob from the suite, it will grant access to:</p>
             <ul class="rule-list">
-                <li><strong>Level 8:</strong> Building Gyms & Amenities.</li>
+                <li><strong>3rd Floor:</strong> Our floor (Suite access).</li>
+                <li><strong>8th Floor:</strong> Building Gyms & Amenities.</li>
+                <li><strong>4th Floor:</strong> Secure Parking.</li>
                 <li><strong>P2:</strong> Garbage & Recycling disposal.</li>
-                <li><strong>P4:</strong> Secure Parking (Stall assignment will be provided in Airbnb app).</li>
             </ul>
-            <div class="alert-box">
-                <h4>Fob Return</h4>
-                <p style="margin-bottom: 0;">The key fob <strong>must be left inside the suite</strong> on the kitchen counter upon your final checkout. If you check out early, please message us via Airbnb so we can inform our cleaners.</p>
-            </div>
         </div>
     </section>
 
@@ -176,21 +165,63 @@
             <h2 class="serif">How-To Guide</h2>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <h3 class="serif">Espresso Machine</h3>
+                    <h3><span class="appliance-icon">☕</span> Espresso Machine</h3>
                     <p>Bosch 800 Series: Water tank is on the **right side**. Fresh beans are in the cupboard directly above the machine. Run rinse cycle after use.</p>
                 </div>
                 <div class="feature-card">
-                    <h3 class="serif">Outdoor Fire Table</h3>
-                    <p>1. Open door, turn propane cap left. 2. Turn knob left, press spark button. 3. Hold knob in for a few seconds to ignite.</p>
+                    <h3><span class="appliance-icon">🔥</span> Outdoor Fire Table</h3>
+                    <p>1. Open door, turn propane cap left. 2. Turn knob left, press spark button. 3. Hold knob in while sparking to ignite. **Always turn propane fully off (to the right) when finished.**</p>
                 </div>
                 <div class="feature-card">
-                    <h3 class="serif">Robot Vacuum</h3>
-                    <p>Press Power to start whole-home clean. Press Home to return to base. If stuck, clear debris from underneath and press Power to resume.</p>
+                    <h3><span class="appliance-icon">🤖</span> Robot Vacuum</h3>
+                    <p>Roborock: Press Power to start whole-home clean. It returns to its base on its own. No need to empty; there is enough space for your stay.</p>
                 </div>
                 <div class="feature-card">
-                    <h3 class="serif">Samsung Bespoke Vacuum</h3>
-                    <p>Located in the den. Lift off base, use touch controls. Return to base after use; it will automatically empty the dirt.</p>
+                    <h3><span class="appliance-icon">🧹</span> Bespoke Vacuum</h3>
+                    <p>Samsung: Located in the den. Lift off base, use touch controls. It will automatically suck out the dirt when returned to base. No need to empty manually.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="guidebook">
+        <div class="container">
+            <span class="section-tag">Explore</span>
+            <h2 class="serif">Local Recommendations</h2>
+            <div class="map-list">
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Shoppers+Drug+Mart+2748+East+Hastings+Vancouver" target="_blank" class="map-link">
+                    <div class="map-info"><h4>Shoppers Drug Mart</h4><p>Pharmacy — 2748 E Hastings</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Starbucks+850+Powell+St+Vancouver" target="_blank" class="map-link">
+                    <div class="map-info"><h4>Starbucks</h4><p>Coffee — 850 Powell St</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Pink+Pearl+Chinese+1132+East+Hastings+Vancouver" target="_blank" class="map-link">
+                    <div class="map-info"><h4>Pink Pearl Chinese</h4><p>Dining — 1132 E Hastings</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=La+Casa+Gelato+1033+Venables+St+Vancouver" target="_blank" class="map-link">
+                    <div class="map-info"><h4>La Casa Gelato</h4><p>Ice Cream — 1033 Venables St</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=The+Garden+Strathcona+868+East+Hastings+Vancouver" target="_blank" class="map-link">
+                    <div class="map-info"><h4>The Garden Strathcona</h4><p>Cafe & Plants — 868 E Hastings</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Superflux+Beer+505+Clark+Dr+Vancouver" target="_blank" class="map-link">
+                    <div class="map-info"><h4>Superflux Beer</h4><p>Brewery — 505 Clark Dr</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Luppolo+Pizza+1123+Venables+St+Vancouver" target="_blank" class="map-link">
+                    <div class="map-info"><h4>Luppolo Pizza & Brewing</h4><p>Dining — 1123 Venables St</p></div><div class="map-icon">→</div></a></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="road-trips">
+        <div class="container">
+            <span class="section-tag">Beyond the City</span>
+            <h2 class="serif">Day Trip Ideas</h2>
+            <div class="road-trip-card">
+                <h4>Whistler Day Trip</h4>
+                <p>A scenic 2-hour drive up the Sea-to-Sky Highway. World-class skiing, hiking, and a vibrant village vibe.</p>
+            </div>
+            <div class="road-trip-card">
+                <h4>Squamish Adventure</h4>
+                <p>Halfway to Whistler. Visit the Sea to Sky Gondola or hike the Stawamus Chief for epic fjord views.</p>
+            </div>
+            <div class="road-trip-card">
+                <h4>Hope & The Fraser Canyon</h4>
+                <p>2 hours East. Visit the Othello Tunnels or the iconic town where Rambo was filmed.</p>
             </div>
         </div>
     </section>
@@ -201,10 +232,10 @@
             <h2 class="serif">Comfort & Care</h2>
             <ul class="rule-list">
                 <li><strong>Shoes Off:</strong> Please remove your shoes when entering the home.</li>
-                <li><strong>Balcony Safety:</strong> Do not leave children unattended on the balcony at any time.</li>
-                <li><strong>Climate:</strong> Each room has a thermostat. Comfortable range is 20-22°C. On hot days, ensure AC tubes are properly inserted in the window.</li>
-                <li><strong>Kitchen:</strong> Tap water is safe to drink. A Brita filter is in the fridge, and ice trays are in the mini-fridge freezer.</li>
-                <li><strong>Supplies:</strong> Feel free to use laundry detergent and cleaning products. Please use only toilet paper in the toilet; other items go in the bin.</li>
+                <li><strong>Sofa Comfort:</strong> Couch headrests are adjustable. The main sofa pulls out for extra lounging space.</li>
+                <li><strong>Climate:</strong> Comfort range is 20-22°C. On hot days, ensure AC tubes are in the window.</li>
+                <li><strong>Kitchen:</strong> Tap water is safe. Brita in fridge; ice in mini-fridge freezer.</li>
+                <li><strong>Supplies:</strong> Feel free to use laundry detergent and cleaning products.</li>
             </ul>
         </div>
     </section>
@@ -213,26 +244,9 @@
         <div class="container">
             <span class="section-tag" style="color: #c53030;">Safety First</span>
             <h2 class="serif">In Case of Emergency</h2>
-            <p><strong>Emergency Services:</strong> Dial 911 (Police, Fire, Ambulance).</p>
-            <p><strong>Nearest Hospital:</strong> St. Paul's Hospital (Downtown).</p>
-            <div style="margin-top: 24px;">
-                <p><strong>Fire Extinguishers:</strong> Under the kitchen sink, and a larger one in the building hallway to the left of our suite exit.</p>
-                <p><strong>Building Safety:</strong> Emergency stairs are located directly to the left in the hallway. Use fire doors as marked.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="checkout">
-        <div class="container">
-            <span class="section-tag">Departure</span>
-            <h2 class="serif">Checkout Checklist</h2>
-            <ul class="rule-list">
-                <li>Check-out is at <strong>12:00 PM</strong>.</li>
-                <li>Turn off all lights, appliances, and fireplaces.</li>
-                <li><strong>Linens & Dishes:</strong> Our cleaners will handle these. However, if you'd like to help, feel free to run a load of dishes and strip the sheets.</li>
-                <li><strong>Left Items:</strong> Any items left behind will be placed in the hallway. We will notify you of lost items; pick-up or shipping (at guest's expense) can be arranged based on availability.</li>
-                <li><strong>Contact:</strong> All messaging must be through the Airbnb app. We reply promptly.</li>
-            </ul>
+            <p><strong>Emergency Services:</strong> Dial 911. <strong>Nearest Hospital:</strong> St. Paul's.</p>
+            <p><strong>Extinguishers:</strong> Under kitchen sink & in hallway left of suite exit.</p>
+            <p><strong>Exits:</strong> Emergency stairs are directly to the left in the hallway.</p>
         </div>
     </section>
 
@@ -240,7 +254,7 @@
         <div class="container">
             <span class="footer-logo">The Raymur</span>
             <p class="footer-tag">Unit 303, 983 East Hastings St, Vancouver</p>
-            <p style="margin-top: 40px; opacity: 0.5; font-size: 11px;">&copy; 2026 Robert & Veena</p>
+            <p style="margin-top: 40px; opacity: 0.5; font-size: 11px;">&copy; 2026 Robert & Vina</p>
         </div>
     </footer>
 </body>
