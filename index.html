@@ -68,12 +68,13 @@
         .alert-box { background: #fff5f5; border-left: 4px solid #f87171; padding: 20px; margin: 24px 0; }
         .alert-box h4 { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #991b1b; margin-bottom: 8px; }
 
-        .appliance-icon { font-size: 28px; }
-
-        .map-icon { width: 32px; height: 32px; background: var(--terracotta); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: var(--transition); font-size: 12px; }
         .map-link { display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: var(--charcoal); padding: 12px 0; border-bottom: 1px solid var(--border); }
         .map-info h4 { font-size: 18px; margin-bottom: 2px; font-weight: 500; }
         .map-info p { font-size: 14px; margin-bottom: 0; color: var(--terracotta); }
+        .map-icon { width: 32px; height: 32px; background: var(--terracotta); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: var(--transition); font-size: 12px; }
+
+        .road-trip-card { background: #F2EBE6; padding: 20px; border-radius: 4px; margin-bottom: 16px; }
+        .road-trip-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--terracotta); margin-bottom: 4px; }
 
         footer { background: var(--charcoal); color: var(--cream); padding: 80px 0 40px; text-align: center; }
         .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 32px; margin-bottom: 16px; display: block; }
@@ -86,7 +87,7 @@
     <nav>
         <div class="container nav-inner">
             <a href="#" class="logo serif">The Raymur</a>
-            <div style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;">Strathcona, BC</div>
+            <div style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;">Vancouver, BC</div>
         </div>
     </nav>
 
@@ -129,10 +130,16 @@
     <section id="access">
         <div class="container">
             <span class="section-tag">Logistics</span>
-            <h2 class="serif">Entry & Requests</h2>
-            <p><strong>Suite Entry:</strong> Use the 4-digit code provided in the app. Remember to firmly shut the door behind you.</p>
-            <p><strong>Check-in/out Requests:</strong> If you need an early check-in or late checkout, please message us via Airbnb and we will do our best to accommodate.</p>
-            <p><strong>Fob Access:</strong> Grants entry to 3rd floor (Suite), 8th floor (Amenities), 4th floor (Parking), and P2 (Garbage).</p>
+            <h2 class="serif">Entry & Building Access</h2>
+            <p><strong>Suite Door:</strong> Keyless entry. Use the 4-digit code provided in the app. Remember to firmly shut the door.</p>
+            <p><strong>Fob Access:</strong> Retrieve the blue key fob from the counter. It provides entry to:</p>
+            <ul class="rule-list">
+                <li><strong>3rd Floor:</strong> Suite Access.</li>
+                <li><strong>8th Floor:</strong> Building Gyms & Amenities.</li>
+                <li><strong>4th Floor:</strong> Secure Parking (Stall assignment in app).</li>
+                <li><strong>P2:</strong> Garbage & Recycling disposal.</li>
+            </ul>
+            <p><strong>Requests:</strong> If you need early check-in or late checkout, message us via Airbnb; we will try our best to accommodate.</p>
         </div>
     </section>
 
@@ -161,20 +168,20 @@
             <h2 class="serif">How-To Guide</h2>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <h3><span class="appliance-icon">☕</span> Espresso Machine</h3>
-                    <p>Bosch 800 Series: Water tank is on the right side. Fresh beans are in the cupboard directly above the machine. Run rinse cycle after use.</p>
+                    <h3>☕ Espresso Machine</h3>
+                    <p>Bosch 800 Series: Water tank is on the **right side**. Fresh beans are in the cupboard directly above the machine. Run rinse cycle after use.</p>
                 </div>
                 <div class="feature-card">
-                    <h3><span class="appliance-icon">🔥</span> Outdoor Fire Table</h3>
-                    <p>1. Open door, turn propane cap left. 2. Turn knob left, press spark button. 3. Hold knob in while sparking to ignite. **Always turn propane fully off (to the right) when finished.**</p>
+                    <h3>🔥 Outdoor Fire Table</h3>
+                    <p>1. Open door, turn propane cap left. 2. Turn knob left, press spark button. 3. Hold knob in while sparking to ignite. **Turn propane fully right to close.**</p>
                 </div>
                 <div class="feature-card">
-                    <h3><span class="appliance-icon">🤖</span> Robot Vacuum</h3>
-                    <p>Roborock: Press Power to start whole-home clean. No need to empty; there is enough space for your stay.</p>
+                    <h3>🤖 Robot Vacuum</h3>
+                    <p>Roborock: Press Power to start. Returns to base on its own. No need to empty; there is enough space for your stay.</p>
                 </div>
                 <div class="feature-card">
-                    <h3><span class="appliance-icon">🧺</span> Laundry</h3>
-                    <p>You are welcome to use the washing machine for your own clothes as needed. No need to wash bedding or towels upon checkout.</p>
+                    <h3>🧹 Bespoke Vacuum</h3>
+                    <p>Samsung: Located in den. Lift off base, use touch controls. Returns to base to empty automatically. No manual emptying needed.</p>
                 </div>
             </div>
         </div>
@@ -185,17 +192,81 @@
             <span class="section-tag">Explore</span>
             <h2 class="serif">Local Recommendations</h2>
             <div class="map-list">
-                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Shoppers+Drug+Mart+2748+East+Hastings+Vancouver" target="_blank" class="map-link">
-                    <div class="map-info"><h4>Shoppers Drug Mart</h4><p>Pharmacy — 2748 E Hastings</p></div><div class="map-icon">→</div></a></div>
-                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Starbucks+850+Powell+St+Vancouver" target="_blank" class="map-link">
-                    <div class="map-info"><h4>Starbucks</h4><p>Coffee — 850 Powell St</p></div><div class="map-icon">→</div></a></div>
-                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=La+Casa+Gelato+1033+Venables+St+Vancouver" target="_blank" class="map-link">
-                    <div class="map-info"><h4>La Casa Gelato</h4><p>Ice Cream — 1033 Venables St</p></div><div class="map-icon">→</div></a></div>
-                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=The+Garden+Strathcona+868+East+Hastings+Vancouver" target="_blank" class="map-link">
-                    <div class="map-info"><h4>The Garden Strathcona</h4><p>Cafe & Plants — 868 E Hastings</p></div><div class="map-icon">→</div></a></div>
-                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Superflux+Beer+505+Clark+Dr+Vancouver" target="_blank" class="map-link">
-                    <div class="map-info"><h4>Superflux Beer</h4><p>Brewery — 505 Clark Dr</p></div><div class="map-icon">→</div></a></div>
+                <!-- Coffee & Essentials -->
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Rumor+Cafe+957+East+Hastings+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>Rumor Cafe</h4><p>Coffee — 957 E Hastings (Downstairs)</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Prototype+Coffee+883+East+Hastings+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>Prototype Coffee</h4><p>Artisanal Roast — 883 E Hastings</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=The+Garden+Strathcona+868+East+Hastings+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>The Garden Strathcona</h4><p>Cafe & Plants — 868 E Hastings</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Starbucks+850+Powell+St+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>Starbucks</h4><p>Coffee — 850 Powell St</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Shoppers+Drug+Mart+2748+East+Hastings+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>Shoppers Drug Mart</h4><p>Pharmacy — 2748 E Hastings</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=No+Frills+1460+East+Hastings+Street+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>No Frills</h4><p>Groceries — 1460 E Hastings</p></div><div class="map-icon">→</div></a></div>
+                
+                <!-- Food -->
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Pho+Con+Express+987+East+Hastings+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>Pho Con Express</h4><p>Vietnamese — 987 E Hastings</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Pink+Pearl+Chinese+1132+East+Hastings+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>Pink Pearl Chinese</h4><p>Dim Sum — 1132 E Hastings</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=La+Casa+Gelato+1033+Venables+St+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>La Casa Gelato</h4><p>Ice Cream — 1033 Venables St</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Luppolo+Pizza+1123+Venables+St+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>Luppolo Pizza</h4><p>Pizza & Beer — 1123 Venables St</p></div><div class="map-icon">→</div></a></div>
+                
+                <!-- Drinks -->
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Strathcona+Beer+Company+895+East+Hastings+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>Strathcona Beer Co.</h4><p>Brewery — 895 E Hastings</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Container+Brewing+1216+Franklin+Street+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>Container Brewing</h4><p>Brewery — 1216 Franklin St</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Superflux+Beer+505+Clark+Dr+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>Superflux Beer</h4><p>Brewery — 505 Clark Dr</p></div><div class="map-icon">→</div></a></div>
+                
+                <!-- Districts -->
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Gastown+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>Gastown & Chinatown</h4><p>Historic District — 12 min walk</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=BC+Place+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>Stadium District</h4><p>BC Place & Rogers Arena</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Commercial+Drive+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>Commercial Drive</h4><p>Eclectic Dining & Shops</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=Olympic+Village+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>Olympic Village</h4><p>Seawall & Brewing</p></div><div class="map-icon">→</div></a></div>
+                <div class="map-item"><a href="https://www.google.com/maps/search/?api=1&query=PNE+Vancouver" target="_blank" class="map-link"><div class="map-info"><h4>PNE Grounds</h4><p>Exhibition & Events</p></div><div class="map-icon">→</div></a></div>
             </div>
+        </div>
+    </section>
+
+    <section id="city-stars">
+        <div class="container">
+            <span class="section-tag">Vancouver Icons</span>
+            <h2 class="serif">Stars of the City</h2>
+            <div class="road-trip-card">
+                <p>📍 <strong>Stanley Park:</strong> World-famous seawall, totem poles, and aquarium.</p>
+                <p>📍 <strong>Granville Island:</strong> Public market, artisans, and waterfront dining.</p>
+                <p>📍 <strong>Capilano Suspension Bridge:</strong> Treetop adventures in North Vancouver.</p>
+                <p>📍 <strong>English Bay:</strong> Best sunset beach in the city.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="road-trips">
+        <div class="container">
+            <span class="section-tag">Road Trip Ideas</span>
+            <h2 class="serif">Day Trips from the Raymur</h2>
+            <div class="road-trip-card"><h4>Whistler Day Trip</h4><p>Scenic 2hr drive North. World-class village and peaks.</p></div>
+            <div class="road-trip-card"><h4>Squamish Adventure</h4><p>1hr North. Sea to Sky Gondola & epic fjord hiking.</p></div>
+            <div class="road-trip-card"><h4>Hope & Othello Tunnels</h4><p>2hr East. Iconic mountain town and historic tunnels.</p></div>
+        </div>
+    </section>
+
+    <section id="rules">
+        <div class="container">
+            <span class="section-tag">House Rules</span>
+            <h2 class="serif">Comfort & Care</h2>
+            <ul class="rule-list">
+                <li><strong>Shoes:</strong> Please remove shoes inside the home.</li>
+                <li><strong>Children:</strong> Do not leave children unattended on the balcony.</li>
+                <li><strong>Sofa:</strong> Headrests are adjustable; sofa pulls out for lounging.</li>
+                <li><strong>Climate:</strong> Thermostats in each room. Comfort: 20-22°C. Ensure AC tubes are in window on hot days.</li>
+                <li><strong>Utilities:</strong> Tap water is safe. Brita in fridge; ice in mini-fridge freezer. Only TP in toilet (bin for all else).</li>
+                <li><strong>Supplies:</strong> Feel free to use laundry detergent, cleaning products, and house supplies.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="emergency" style="background: #fffafa;">
+        <div class="container">
+            <span class="section-tag" style="color: #c53030;">Safety First</span>
+            <h2 class="serif">In Case of Emergency</h2>
+            <p><strong>Emergency Services:</strong> Dial 911 (Police, Fire, Ambulance).</p>
+            <p><strong>Nearest Hospital:</strong> St. Paul's Hospital (Downtown).</p>
+            <p><strong>Fire Extinguishers:</strong> Under kitchen sink, and in building hallway left of suite exit.</p>
+            <p><strong>Exit:</strong> Emergency stairs directly to the left in the hallway. Use fire doors as marked.</p>
         </div>
     </section>
 
@@ -205,10 +276,11 @@
             <h2 class="serif">Checkout Checklist</h2>
             <ul class="rule-list">
                 <li>Check-out is at <strong>12:00 PM</strong>.</li>
-                <li><strong>Laundry:</strong> Don't worry about starting a load. Bedding and towels are handled by our team.</li>
+                <li><strong>Laundry:</strong> Use machine for your clothes as needed. No need to wash linens/towels on exit.</li>
+                <li><strong>Cleaning:</strong> Cleaners handle dishes/linens, but feel free to run dishes or strip sheets to help!</li>
                 <li>Ensure all lights, appliances, and fireplaces are off.</li>
-                <li><strong>Crucial:</strong> Ensure the front door is pulled/pushed firmly shut.</li>
-                <li>Message us on Airbnb if you check out early.</li>
+                <li><strong>Crucial:</strong> FIRMLY PUSH/PULL DOOR SHUT on your way out.</li>
+                <li>Leave fob on the kitchen counter and message us via Airbnb app.</li>
             </ul>
         </div>
     </section>
